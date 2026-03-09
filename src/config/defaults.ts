@@ -102,7 +102,7 @@ function resolveAnthropicDefaultAuthMode(cfg: OpenClawConfig): AnthropicAuthDefa
     return "oauth";
   }
 
-  if (process.env.ANTHROPIC_OAUTH_TOKEN?.trim()) {
+  if (process.env.CLAUDE_CODE_OAUTH_TOKEN?.trim() || process.env.ANTHROPIC_OAUTH_TOKEN?.trim()) {
     return "oauth";
   }
   if (process.env.ANTHROPIC_API_KEY?.trim()) {

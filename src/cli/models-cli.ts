@@ -325,12 +325,14 @@ export function registerModelsCli(program: Command) {
     .command("setup-token")
     .description("Run a provider CLI to create/sync a token (TTY required)")
     .option("--provider <name>", "Provider id (default: anthropic)")
+    .option("--method <method>", "Token method: oauth, cli, or paste")
     .option("--yes", "Skip confirmation", false)
     .action(async (opts) => {
       await runModelsCommand(async () => {
         await modelsAuthSetupTokenCommand(
           {
             provider: opts.provider as string | undefined,
+            method: opts.method as string | undefined,
             yes: Boolean(opts.yes),
           },
           defaultRuntime,
